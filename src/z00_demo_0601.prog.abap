@@ -28,10 +28,10 @@ connection-city_to = 'NEW YORK'.
 carrier-carrier_id = 'LH'.
 carrier-carrier_name = 'Lufthansa'.
 
-WRITE: |Carrier ID: { connection-carrier_id }|.
-WRITE: / |Connection ID: { connection-connection_id }|.
-WRITE: / |City From: { connection-city_from }|.
-WRITE: / |City To: { connection-city_to }|.
+WRITE: |Kürzel der Fluggesellschaft: { connection-carrier_id }|.
+WRITE: / |Verbindungsnummer: { connection-connection_id }|.
+WRITE: / |Abflugstadt: { connection-city_from }|.
+WRITE: / |Ankunftstadt: { connection-city_to }|.
 
 "Kopieren namensgleicher Strukturkomponenten
 connection_xt = CORRESPONDING #( connection ).

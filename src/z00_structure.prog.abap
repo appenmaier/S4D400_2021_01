@@ -37,18 +37,18 @@ CALL FUNCTION 'Z_00_GET_NEXT_FLIGHT'
     no_data       = 1
     OTHERS        = 2.
 IF sy-subrc <> 0.
-  WRITE 'Fehler: keine Daten'.
+  WRITE 'Fehler: keine Daten gefunden'.
 ENDIF.
 
 connection_xt = CORRESPONDING #( connection ).
 connection_xt = CORRESPONDING #( BASE ( connection_xt ) flight ).
 
 "Ausgabe
-WRITE: |Carrier ID: { connection_xt-carrid }|.
-WRITE: / |Connection ID: { connection_xt-connid }|.
-WRITE: / |City From: { connection_xt-cityfrom }|.
-WRITE: / |City To: { connection_xt-cityto }|.
-WRITE: / |Flight Date: { connection_xt-fldate }|.
-WRITE: / |Planetype: { connection_xt-planetype }|.
-WRITE: / |Max. Seats: { connection_xt-seatsmax }|.
-WRITE: / |Occ. Seats: { connection_xt-seatsocc }|.
+WRITE: |Kürzel der Fluggesellschaft: { connection_xt-carrid }|.
+WRITE: / |Verbindungsnummer: { connection_xt-connid }|.
+WRITE: / |Abflugstadt: { connection_xt-cityfrom }|.
+WRITE: / |Ankunftstadt: { connection_xt-cityto }|.
+WRITE: / |Flugdatum: { connection_xt-fldate }|.
+WRITE: / |Flugzeugtyp: { connection_xt-planetype }|.
+WRITE: / |Sitzplätze (max): { connection_xt-seatsmax }|.
+WRITE: / |Sitzplätze (belegt): { connection_xt-seatsocc }|.

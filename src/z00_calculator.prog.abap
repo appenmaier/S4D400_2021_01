@@ -16,11 +16,11 @@ DATA output TYPE string.
 "Eingabeprüfungen
 IF operator <> '+' AND operator <> '-'
  AND operator <> '*' AND operator <> '/' AND operator <> '%'.
-  output = 'Fehler: ungültiger Operator!'.
+  output = 'Fehler: ungültiger Operator'.
 ENDIF.
 
 IF operator = '/' AND operand2 IS INITIAL.
-  output = 'Fehler: Division durch Null!'.
+  output = 'Fehler: Division durch Null'.
 ENDIF.
 
 "Hauptverarbeitung
@@ -49,7 +49,7 @@ IF output IS INITIAL.
           division_by_zero = 1
           OTHERS           = 2.
       IF sy-subrc <> 0.
-        output = 'Fehler: Division durch Null!'.
+        output = 'Fehler: Division durch Null'.
       ENDIF.
   ENDCASE.
   output = result.

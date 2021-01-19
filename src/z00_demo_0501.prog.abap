@@ -22,7 +22,7 @@ CALL FUNCTION 'Z_00_SET_FLIGHT'
     initial_parameters = 1
     OTHERS             = 2.
 IF sy-subrc <> 0.
-  output = 'Fehler: initial parameters'.
+  output = 'Fehler: initiale Parameter'.
 ENDIF.
 
 "Lesen

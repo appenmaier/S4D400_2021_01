@@ -15,13 +15,13 @@ DATA flight_date TYPE s_date VALUE '20210118'.
 "Einfachverzweigung
 IF NOT ( flight_date >= '20210101' AND flight_date <= '20211231' )
  OR carrier_id = 'LH'.
-  WRITE 'X'.
+  WRITE '1. IF: Bedingung erfüllt'.
 ELSE.
-  WRITE '-'.
+  WRITE '1. IF: Bedingung nicht erfüllt'.
 ENDIF.
 
 IF carrier_id IS NOT INITIAL.
-  WRITE 'X'.
+  WRITE '2. IF: Bedingung erfüllt'.
 ENDIF.
 
 "Mehrfachverzweigung
@@ -30,7 +30,7 @@ IF carrier_id = 'LH'.
 ELSEIF carrier_id = 'UA'.
   WRITE: / 'United Airlines'.
 ELSE.
-  WRITE: 'others'.
+  WRITE: '-'.
 ENDIF.
 
 CASE carrier_id.
@@ -39,5 +39,5 @@ CASE carrier_id.
   WHEN 'UA'.
     WRITE: / 'United Airlines'.
   WHEN OTHERS.
-    WRITE: 'others'.
+    WRITE: '-'.
 ENDCASE.
