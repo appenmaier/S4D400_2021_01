@@ -5,6 +5,7 @@
 *&---------------------------------------------------------------------*
 REPORT z00_calculator.
 
+"Deklarationen
 PARAMETERS operand1 TYPE p LENGTH 16 DECIMALS 2.
 PARAMETERS operator TYPE c LENGTH 1.
 PARAMETERS operand2 TYPE p LENGTH 16 DECIMALS 2.
@@ -12,6 +13,7 @@ PARAMETERS operand2 TYPE p LENGTH 16 DECIMALS 2.
 DATA result TYPE p LENGTH 16 DECIMALS 2.
 DATA output TYPE string.
 
+"Eingabeprüfungen
 IF operator <> '+' AND operator <> '-'
  AND operator <> '*' AND operator <> '/' AND operator <> '%'.
   output = 'Fehler: ungültiger Operator!'.
@@ -21,6 +23,7 @@ IF operator = '/' AND operand2 IS INITIAL.
   output = 'Fehler: Division durch Null!'.
 ENDIF.
 
+"Hauptverarbeitung
 IF output IS INITIAL.
   CASE operator.
     WHEN '+'.
@@ -52,4 +55,5 @@ IF output IS INITIAL.
   output = result.
 ENDIF.
 
+"Ausgabe
 WRITE output.

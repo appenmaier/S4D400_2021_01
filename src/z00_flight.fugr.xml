@@ -35,6 +35,52 @@
      </DOCUMENTATION>
     </item>
     <item>
+     <FUNCNAME>Z_00_GET_NEXT_FLIGHT</FUNCNAME>
+     <SHORT_TEXT>Get Next Flight</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>CARRIER_ID</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>S_CARR_ID</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>CONNECTION_ID</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>S_CONN_ID</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>FLIGHT</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>Z00_FLIGHT</TYP>
+      </RSEXP>
+     </EXPORT>
+     <EXCEPTION>
+      <RSEXC>
+       <EXCEPTION>NO_DATA</EXCEPTION>
+      </RSEXC>
+     </EXCEPTION>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>CARRIER_ID</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>CONNECTION_ID</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>FLIGHT</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>NO_DATA</PARAMETER>
+       <KIND>X</KIND>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
      <FUNCNAME>Z_00_SET_FLIGHT</FUNCNAME>
      <SHORT_TEXT>Set Flight</SHORT_TEXT>
      <IMPORT>

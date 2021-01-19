@@ -41,6 +41,7 @@ AT SELECTION-SCREEN ON connid.
     MESSAGE 'connid is initial' TYPE 'E'.
   ENDIF.
 
+
 **********************************************************************
 * Hauptverarbeitung
 **********************************************************************

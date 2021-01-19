@@ -8,19 +8,20 @@ REPORT z00_demo_0304.
 DATA carrier_id TYPE s_carr_id VALUE 'LH'.
 DATA flight_date TYPE s_date VALUE '20210118'.
 
-"Vergleichsoperatoren
-" =, <>, >, >=, <, <=, BETWEEN
+"Vergleichsoperatoren: =, <>, >, >=, <, <=, BETWEEN
 
-"Logische Operatoren
-"AND, OR, NOT
+"Logische Operatoren: AND, OR, NOT
 
 "Einfachverzweigung
 IF NOT ( flight_date >= '20210101' AND flight_date <= '20211231' )
  OR carrier_id = 'LH'.
+  WRITE 'X'.
 ELSE.
+  WRITE '-'.
 ENDIF.
 
 IF carrier_id IS NOT INITIAL.
+  WRITE 'X'.
 ENDIF.
 
 "Mehrfachverzweigung

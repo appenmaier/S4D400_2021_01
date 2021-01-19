@@ -6,5 +6,5 @@
 REPORT z00_demo_0201.
 
 DATA text TYPE string. "Deklaration
-text = 'Hallo'. "Wertzuweisung
-WRITE: text, 'Welt!'. "Ausgabe mit Hilfe des Kettensatzes (: ,)
+text = 'Hello'. "Wertzuweisung
+WRITE: text, 'World'. "Ausgabe mit Hilfe des Kettensatzes
