@@ -13,6 +13,7 @@ FUNCTION z_00_get_next_flight.
 
   SELECT FROM sflight FIELDS *
    WHERE carrid = @carrier_id AND connid = @connection_id
+   AND fldate > @sy-datlo
    ORDER BY fldate
    INTO CORRESPONDING FIELDS OF TABLE @flights.
   IF sy-subrc <> 0.

@@ -35,6 +35,43 @@
      </DOCUMENTATION>
     </item>
     <item>
+     <FUNCNAME>Z_00_GET_FLIGHTS</FUNCNAME>
+     <SHORT_TEXT>Get Flights</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>CONNECTIONS</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>Z00_CONNECTIONS</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>FLIGHTS</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>Z00_FLIGHTS</TYP>
+      </RSEXP>
+     </EXPORT>
+     <EXCEPTION>
+      <RSEXC>
+       <EXCEPTION>NO_DATA</EXCEPTION>
+      </RSEXC>
+     </EXCEPTION>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>CONNECTIONS</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>FLIGHTS</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>NO_DATA</PARAMETER>
+       <KIND>X</KIND>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
      <FUNCNAME>Z_00_GET_NEXT_FLIGHT</FUNCNAME>
      <SHORT_TEXT>Get Next Flight</SHORT_TEXT>
      <IMPORT>
