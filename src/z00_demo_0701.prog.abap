@@ -61,3 +61,15 @@ ENDLOOP.
 *LOOP AT carriers INTO DATA(dummy).
 *  carriers[ sy-tabix ]-carrier_name = carriers[ sy-tabix ]-carrier_name && ' 2021'.
 *ENDLOOP.
+
+"Sortieren interner Tabellen
+SORT carriers BY carrier_id ASCENDING carrier_name DESCENDING.
+
+"Löschen eines Einzelsatzes
+DELETE carriers INDEX 1.
+
+"Löschen mehrerer Datensätze
+DELETE carriers WHERE carrier_id > 'MM'.
+
+"Größe einer internen Tabelle
+WRITE: / |Größe der internen Tabelle: { lines( carriers ) }|.

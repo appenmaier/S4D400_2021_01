@@ -1,9 +1,9 @@
 *&---------------------------------------------------------------------*
-*& Report z00_calculator
+*& Report z00_ex_calculator
 *&---------------------------------------------------------------------*
 *&
 *&---------------------------------------------------------------------*
-REPORT z00_calculator.
+REPORT z00_ex_calculator.
 
 "Deklarationen
 PARAMETERS operand1 TYPE p LENGTH 16 DECIMALS 2.

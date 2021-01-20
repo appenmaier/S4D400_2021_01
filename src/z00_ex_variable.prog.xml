@@ -3,7 +3,7 @@
  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
   <asx:values>
    <PROGDIR>
-    <NAME>Z00_EXKURS_ABAP_REPORT</NAME>
+    <NAME>Z00_EX_VARIABLE</NAME>
     <DBAPL>S</DBAPL>
     <SUBC>1</SUBC>
     <FIXPT>X</FIXPT>
@@ -13,8 +13,8 @@
    <TPOOL>
     <item>
      <ID>R</ID>
-     <ENTRY>Exkurs: klassisches ABAP-Programme</ENTRY>
-     <LENGTH>34</LENGTH>
+     <ENTRY>Variable</ENTRY>
+     <LENGTH>8</LENGTH>
     </item>
    </TPOOL>
   </asx:values>

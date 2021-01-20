@@ -1,9 +1,9 @@
 *&---------------------------------------------------------------------*
-*& Report z00_structure
+*& Report z00_ex_structure
 *&---------------------------------------------------------------------*
 *&
 *&---------------------------------------------------------------------*
-REPORT z00_structure.
+REPORT z00_ex_structure.
 
 "Definitionen und Deklarationen
 TYPES: BEGIN OF connection_xt,

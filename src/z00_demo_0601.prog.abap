@@ -36,3 +36,7 @@ WRITE: / |Ankunftstadt: { connection-city_to }|.
 "Kopieren namensgleicher Strukturkomponenten
 connection_xt = CORRESPONDING #( connection ).
 connection_xt = CORRESPONDING #( BASE ( connection_xt ) carrier ).
+
+"Arbeiten mit Konstruktoren-Operatoren (CORRESPDONING, VALUE, NEW, CAST)
+connection_xt = CORRESPONDING #( connection ).
+DATA(connection_xt2) = CORRESPONDING connection_xt( connection ).
