@@ -3,11 +3,15 @@ CLASS zcl_00_vehicle DEFINITION PUBLIC FINAL CREATE PUBLIC.
   PUBLIC SECTION.
     METHODS set_make
       IMPORTING
-        make TYPE string.
+        make TYPE string
+      RAISING
+        cx_parameter_invalid.
 
     METHODS set_model
       IMPORTING
-        model TYPE string.
+        model TYPE string
+      RAISING
+        cx_parameter_invalid.
 
     METHODS get_make
       RETURNING VALUE(make) TYPE string.
@@ -42,10 +46,22 @@ CLASS zcl_00_vehicle IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD set_make.
+    IF make IS INITIAL.
+      RAISE EXCEPTION TYPE cx_parameter_invalid
+        EXPORTING
+          parameter = 'MAKE'.
+    ENDIF.
+
     me->make = make.
   ENDMETHOD.
 
   METHOD set_model.
+    IF model IS INITIAL.
+      RAISE EXCEPTION TYPE cx_parameter_invalid
+        EXPORTING
+          parameter = 'MODEL'.
+    ENDIF.
+
     me->model = model.
   ENDMETHOD.
 
