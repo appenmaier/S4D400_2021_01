@@ -1,14 +1,9 @@
 CLASS zcl_00_vehicle DEFINITION PUBLIC FINAL CREATE PUBLIC.
 
   PUBLIC SECTION.
-    METHODS set_make
+    METHODS constructor
       IMPORTING
-        make TYPE string
-      RAISING
-        cx_parameter_invalid.
-
-    METHODS set_model
-      IMPORTING
+        make  TYPE string
         model TYPE string
       RAISING
         cx_parameter_invalid.
@@ -21,10 +16,10 @@ CLASS zcl_00_vehicle DEFINITION PUBLIC FINAL CREATE PUBLIC.
 
     METHODS print.
 
-    CLASS-METHODS increase_number_of_vehicles.
-
     CLASS-METHODS get_number_of_vehicles
       RETURNING VALUE(number_of_vehicles) TYPE i.
+
+    CLASS-METHODS class_constructor.
 
   PROTECTED SECTION.
 
@@ -45,26 +40,6 @@ CLASS zcl_00_vehicle IMPLEMENTATION.
     model = me->model.
   ENDMETHOD.
 
-  METHOD set_make.
-    IF make IS INITIAL.
-      RAISE EXCEPTION TYPE cx_parameter_invalid
-        EXPORTING
-          parameter = 'MAKE'.
-    ENDIF.
-
-    me->make = make.
-  ENDMETHOD.
-
-  METHOD set_model.
-    IF model IS INITIAL.
-      RAISE EXCEPTION TYPE cx_parameter_invalid
-        EXPORTING
-          parameter = 'MODEL'.
-    ENDIF.
-
-    me->model = model.
-  ENDMETHOD.
-
   METHOD print.
     WRITE: / |{ make } { model }|.
   ENDMETHOD.
@@ -73,8 +48,26 @@ CLASS zcl_00_vehicle IMPLEMENTATION.
     number_of_vehicles = zcl_00_vehicle=>number_of_vehicles.
   ENDMETHOD.
 
-  METHOD increase_number_of_vehicles.
-    ADD 1 TO number_of_vehicles.
+  METHOD constructor.
+    IF make IS INITIAL.
+      RAISE EXCEPTION TYPE cx_parameter_invalid
+        EXPORTING
+          parameter = 'MAKE'.
+    ENDIF.
+
+    IF model IS INITIAL.
+      RAISE EXCEPTION TYPE cx_parameter_invalid
+        EXPORTING
+          parameter = 'MODEL'.
+    ENDIF.
+
+    me->make = make.
+    me->model = model.
+    number_of_vehicles = number_of_vehicles + 1.
+  ENDMETHOD.
+
+  METHOD class_constructor.
+    WRITE: / |Klassenkonstruktor|.
   ENDMETHOD.
 
 ENDCLASS.
