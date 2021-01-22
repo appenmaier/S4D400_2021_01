@@ -2,6 +2,7 @@ CLASS zcl_00_rental DEFINITION PUBLIC FINAL CREATE PUBLIC.
 
   PUBLIC SECTION.
     INTERFACES zif_00_partner.
+    INTERFACES zif_00_partner_ex.
 
     METHODS constructor
       IMPORTING
@@ -53,6 +54,12 @@ CLASS zcl_00_rental IMPLEMENTATION.
 
   METHOD zif_00_partner~print.
     print( ).
+  ENDMETHOD.
+
+  METHOD zif_00_partner_ex~get_partner_info.
+    partner_info = VALUE #(
+      ( attribute = 'TYPE' value = 'RENTAL' )
+      ( attribute = 'VEHICLES' value = lines( vehicles ) ) ).
   ENDMETHOD.
 
 ENDCLASS.

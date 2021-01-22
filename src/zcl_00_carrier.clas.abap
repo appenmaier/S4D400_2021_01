@@ -1,6 +1,8 @@
 CLASS zcl_00_carrier DEFINITION PUBLIC FINAL CREATE PUBLIC.
 
   PUBLIC SECTION.
+    INTERFACES zif_00_partner_ex.
+
     METHODS add_airplane
       IMPORTING
         airplane TYPE REF TO zcl_00_airplane.
@@ -35,6 +37,12 @@ CLASS zcl_00_carrier IMPLEMENTATION.
         weight = cargo_plane->get_weight( ).
       ENDIF.
     ENDLOOP.
+  ENDMETHOD.
+
+  METHOD zif_00_partner_ex~get_partner_info.
+    partner_info = VALUE #(
+      ( attribute = 'TYPE' value = 'CARRIER' )
+      ( attribute = 'AIRPLANES' value = lines( airplanes ) ) ).
   ENDMETHOD.
 
 ENDCLASS.
