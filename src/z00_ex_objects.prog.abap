@@ -10,10 +10,9 @@ DATA rental TYPE REF TO zcl_00_rental.
 DATA rental2 TYPE REF TO zcl_00_rental.
 DATA car TYPE REF TO zcl_00_car.
 DATA truck TYPE REF TO zcl_00_truck.
-DATA airplane TYPE REF TO zcl_00_airplane.
+DATA carrier TYPE REF TO zcl_00_carrier.
 DATA cargo_plane TYPE REF TO zcl_00_cargo_plane.
 DATA passenger_plane TYPE REF TO zcl_00_passenger_plane.
-DATA carrier TYPE REF TO zcl_00_carrier.
 
 DATA partners TYPE TABLE OF REF TO zif_00_partner_ex.
 
