@@ -1,4 +1,4 @@
-CLASS zcl_00_vehicle DEFINITION PUBLIC CREATE PUBLIC.
+CLASS zcl_00_vehicle DEFINITION ABSTRACT PUBLIC CREATE PUBLIC.
 
   PUBLIC SECTION.
     METHODS constructor
@@ -8,13 +8,13 @@ CLASS zcl_00_vehicle DEFINITION PUBLIC CREATE PUBLIC.
       RAISING
         cx_parameter_invalid.
 
-    METHODS get_make
+    METHODS get_make FINAL
       RETURNING VALUE(make) TYPE string.
 
-    METHODS get_model
+    METHODS get_model FINAL
       RETURNING VALUE(model) TYPE string.
 
-    METHODS print.
+    METHODS print ABSTRACT.
 
     CLASS-METHODS get_number_of_vehicles
       RETURNING VALUE(number_of_vehicles) TYPE i.
@@ -38,10 +38,6 @@ CLASS zcl_00_vehicle IMPLEMENTATION.
 
   METHOD get_model.
     model = me->model.
-  ENDMETHOD.
-
-  METHOD print.
-    WRITE: / |{ make } { model }|.
   ENDMETHOD.
 
   METHOD get_number_of_vehicles.

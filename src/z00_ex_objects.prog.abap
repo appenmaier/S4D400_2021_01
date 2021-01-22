@@ -16,8 +16,8 @@ DATA airplanes TYPE TABLE OF REF TO zcl_00_airplane.
 carrier = NEW #( ).
 
 TRY.
-    passenger_plane = NEW #( name = 'Flugzeug 1' planetype = '747-400' seats = 400 ).
-    carrier->add_airplane( passenger_plane ). "impliziter Upcast
+    cargo_plane = NEW #( name = 'Flugzeug 1' planetype = '757F' weight = 500 ).
+    carrier->add_airplane( cargo_plane ). "impliziter Upcast
   CATCH cx_s4d400_wrong_plane INTO DATA(x).
     WRITE: / x->get_text( ).
 ENDTRY.
@@ -45,3 +45,5 @@ LOOP AT airplanes INTO airplane.
       attributes = DATA(attributes) ).
   WRITE: / |{ attributes[ 1 ]-value } { attributes[ 2 ]-value }|.
 ENDLOOP.
+
+WRITE: / |Größtes Gewicht: { carrier->get_highest_weight( ) }kg|.

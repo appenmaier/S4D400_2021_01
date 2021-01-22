@@ -11,6 +11,9 @@ CLASS zcl_00_cargo_plane DEFINITION PUBLIC INHERITING FROM zcl_00_airplane FINAL
       RAISING
         cx_s4d400_wrong_plane.
 
+    METHODS get_weight
+      RETURNING VALUE(weight) TYPE i.
+
   PROTECTED SECTION.
 
   PRIVATE SECTION.
@@ -31,6 +34,10 @@ CLASS zcl_00_cargo_plane IMPLEMENTATION.
   METHOD constructor.
     super->constructor( name = name planetype = planetype ).
     me->weight = weight.
+  ENDMETHOD.
+
+  METHOD get_weight.
+    weight = me->weight.
   ENDMETHOD.
 
 ENDCLASS.

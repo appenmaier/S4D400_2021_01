@@ -8,6 +8,9 @@ CLASS zcl_00_carrier DEFINITION PUBLIC FINAL CREATE PUBLIC.
     METHODS get_airplanes
       RETURNING VALUE(airplanes) TYPE z00_tt_airplanes.
 
+    METHODS get_highest_weight
+      RETURNING VALUE(weight) TYPE i.
+
   PROTECTED SECTION.
 
   PRIVATE SECTION.
@@ -23,6 +26,15 @@ CLASS zcl_00_carrier IMPLEMENTATION.
 
   METHOD get_airplanes.
     airplanes = me->airplanes.
+  ENDMETHOD.
+
+  METHOD get_highest_weight.
+    LOOP AT airplanes INTO DATA(airplane) WHERE table_line IS INSTANCE OF zcl_00_cargo_plane.
+      DATA(cargo_plane) = CAST zcl_00_cargo_plane( airplane ). "Downcast
+      IF cargo_plane->get_weight( ) >= weight.
+        weight = cargo_plane->get_weight( ).
+      ENDIF.
+    ENDLOOP.
   ENDMETHOD.
 
 ENDCLASS.
