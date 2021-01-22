@@ -1,6 +1,8 @@
 CLASS zcl_00_rental DEFINITION PUBLIC FINAL CREATE PUBLIC.
 
   PUBLIC SECTION.
+    INTERFACES zif_00_partner.
+
     METHODS constructor
       IMPORTING
         name TYPE string.
@@ -47,6 +49,10 @@ CLASS zcl_00_rental IMPLEMENTATION.
         cargo = truck->get_cargo( ).
       ENDIF.
     ENDLOOP.
+  ENDMETHOD.
+
+  METHOD zif_00_partner~print.
+    print( ).
   ENDMETHOD.
 
 ENDCLASS.

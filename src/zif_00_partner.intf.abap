@@ -1,0 +1,5 @@
+INTERFACE zif_00_partner PUBLIC.
+
+  METHODS print.
+
+ENDINTERFACE.
