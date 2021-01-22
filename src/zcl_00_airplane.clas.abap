@@ -1,4 +1,4 @@
-CLASS zcl_00_airplane DEFINITION PUBLIC FINAL CREATE PUBLIC.
+CLASS zcl_00_airplane DEFINITION PUBLIC CREATE PUBLIC.
 
   PUBLIC SECTION.
     TYPES: BEGIN OF attribute,
@@ -7,10 +7,12 @@ CLASS zcl_00_airplane DEFINITION PUBLIC FINAL CREATE PUBLIC.
            END OF attribute.
     TYPES attributes TYPE TABLE OF attribute.
 
-    METHODS set_attributes
+    METHODS constructor
       IMPORTING
         name      TYPE string
-        planetype TYPE saplane-planetype.
+        planetype TYPE saplane-planetype
+      RAISING
+        cx_s4d400_wrong_plane.
 
     METHODS get_attributes
       EXPORTING
@@ -20,12 +22,15 @@ CLASS zcl_00_airplane DEFINITION PUBLIC FINAL CREATE PUBLIC.
       EXPORTING
         number_of_airplanes TYPE i.
 
-  PROTECTED SECTION.
+    CLASS-METHODS class_constructor.
 
-  PRIVATE SECTION.
+  PROTECTED SECTION.
     DATA name TYPE string.
     DATA planetype TYPE saplane-planetype.
+
+  PRIVATE SECTION.
     CLASS-DATA number_of_airplanes TYPE i.
+    CLASS-DATA planetypes TYPE TABLE OF saplane.
 
 ENDCLASS.
 
@@ -41,10 +46,18 @@ CLASS zcl_00_airplane IMPLEMENTATION.
     number_of_airplanes = zcl_00_airplane=>number_of_airplanes.
   ENDMETHOD.
 
-  METHOD set_attributes.
+  METHOD constructor.
+    IF NOT line_exists( planetypes[ planetype = planetype ] ).
+      RAISE EXCEPTION TYPE cx_s4d400_wrong_plane.
+    ENDIF.
+
     me->name = name.
     me->planetype = planetype.
     number_of_airplanes = number_of_airplanes + 1.
+  ENDMETHOD.
+
+  METHOD class_constructor.
+    SELECT FROM saplane FIELDS * INTO TABLE @planetypes.
   ENDMETHOD.
 
 ENDCLASS.
