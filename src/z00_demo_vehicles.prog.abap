@@ -6,37 +6,32 @@
 REPORT z00_demo_vehicles.
 
 "Deklarationen
-DATA vehicle TYPE REF TO zcl_00_vehicle.
+DATA rental TYPE REF TO zcl_00_rental.
 DATA car TYPE REF TO zcl_00_car.
-DATA vehicles TYPE TABLE OF REF TO zcl_00_vehicle.
+DATA truck TYPE REF TO zcl_00_truck.
 
 "Objekterzeugungen
 WRITE: / |Anz. Fahrzeuge: { zcl_00_vehicle=>get_number_of_vehicles( ) }|.
 
+rental = NEW zcl_00_rental( 'Sixxt' ).
+
 TRY.
     car = NEW #( make = 'Opel' model = 'Zafira Life' seats = 7 ).
-    vehicles = VALUE #( BASE vehicles ( car ) ). "Upcast
+    rental->add_vehicle( car ). "impliziter Upcast
   CATCH cx_parameter_invalid INTO DATA(x).
     WRITE: / x->get_text( ).
 ENDTRY.
 
 TRY.
-    vehicle = NEW #( make = 'MAN' model = 'TGX' ).
-    vehicles = VALUE #( BASE vehicles ( vehicle ) ).
+    truck = NEW zcl_00_truck( make = 'MAN' model = 'TGX' cargo = 2 ).
+    rental->add_vehicle( truck ). "impliziter Upcast.
   CATCH cx_parameter_invalid INTO x.
     WRITE: / x->get_text( ).
 ENDTRY.
 
 TRY.
     car = NEW #( make = 'Porsche' model = '911' seats = 2 ).
-    vehicles = VALUE #( BASE vehicles ( car ) ). "Upcast
-  CATCH cx_parameter_invalid INTO x.
-    WRITE: / x->get_text( ).
-ENDTRY.
-
-TRY.
-    vehicle = NEW #( make = '' model = '' ).
-    vehicles = VALUE #( BASE vehicles ( vehicle ) ).
+    rental->add_vehicle( car ). "impliziter Upcast
   CATCH cx_parameter_invalid INTO x.
     WRITE: / x->get_text( ).
 ENDTRY.
@@ -44,6 +39,5 @@ ENDTRY.
 WRITE: / |Anz. Fahrzeuge: { zcl_00_vehicle=>get_number_of_vehicles( ) }|.
 
 "Ausgabe
-LOOP AT vehicles INTO vehicle.
-  vehicle->print( ).
-ENDLOOP.
+rental->print( ).
+WRITE: / |Größte Frachtkapzität: { rental->get_biggest_cargo( ) }t|.

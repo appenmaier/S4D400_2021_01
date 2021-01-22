@@ -7,31 +7,38 @@ REPORT z00_ex_objects.
 
 "Deklarationen
 DATA airplane TYPE REF TO zcl_00_airplane.
+DATA cargo_plane TYPE REF TO zcl_00_cargo_plane.
+DATA passenger_plane TYPE REF TO zcl_00_passenger_plane.
+DATA carrier TYPE REF TO zcl_00_carrier.
 DATA airplanes TYPE TABLE OF REF TO zcl_00_airplane.
 
 "Objekterzeugungen
+carrier = NEW #( ).
+
 TRY.
-    airplane = NEW #( name = 'Flugzeug 1' planetype = '747-400' ).
-    airplanes = VALUE #( BASE airplanes ( airplane ) ).
+    passenger_plane = NEW #( name = 'Flugzeug 1' planetype = '747-400' seats = 400 ).
+    carrier->add_airplane( passenger_plane ). "impliziter Upcast
   CATCH cx_s4d400_wrong_plane INTO DATA(x).
     WRITE: / x->get_text( ).
 ENDTRY.
 
 TRY.
-    airplane = NEW #( name = 'Flugzeug 2' planetype = 'A380-800' ).
-    airplanes = VALUE #( BASE airplanes ( airplane ) ).
+    passenger_plane = NEW #( name = 'Flugzeug 2' planetype = 'A380-800' seats = 800 ).
+    carrier->add_airplane( passenger_plane ). "impliziter Upcast
   CATCH cx_s4d400_wrong_plane INTO x.
     WRITE: / x->get_text( ).
 ENDTRY.
 
 TRY.
-    airplane = NEW #( name = 'Flugzeug 3' planetype = '747-400' ).
-    airplanes = VALUE #( BASE airplanes ( airplane ) ).
+    cargo_plane = NEW #( name = 'Flugzeug 3' planetype = '757F' weight = 1000 ).
+    carrier->add_airplane( cargo_plane ). "impliziter Upcast
   CATCH cx_s4d400_wrong_plane INTO x.
     WRITE: / x->get_text( ).
 ENDTRY.
 
 "Ausgabe
+airplanes = carrier->get_airplanes( ).
+
 LOOP AT airplanes INTO airplane.
   airplane->get_attributes(
     IMPORTING

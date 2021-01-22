@@ -21,7 +21,7 @@ ENDCLASS.
 CLASS zcl_00_passenger_plane IMPLEMENTATION.
 
   METHOD get_attributes.
-    attributes = VALUE #( BASE attributes
+    attributes = VALUE #(
         ( attribute = 'NAME' value = name )
         ( attribute = 'PLANETYPE' value = planetype )
         ( attribute = 'SEATS' value = seats ) ).
