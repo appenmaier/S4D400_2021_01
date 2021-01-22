@@ -1,0 +1,31 @@
+@Metadata.layer: #CORE
+@UI.headerInfo: {
+    typeName: 'Carrier',
+    typeNamePlural: 'Carriers',
+    title: { value: 'CarrierID' },
+    description: { value: 'CarrierName' }
+}
+annotate view Z00_C_CarrierTP with
+{
+  @UI: {
+    lineItem: [{ position: 10, importance: #HIGH }],
+    selectionField: [{ position: 10 }],
+    identification: [{ position: 10, importance: #HIGH }]
+  }
+  CarrierId;
+  @UI: {
+    lineItem: [{ position: 20, importance: #HIGH }],
+    selectionField: [{ position: 20 }],
+    identification: [{ position: 20, importance: #HIGH }]
+  }
+  CarrierName;
+  @UI: {
+    lineItem: [{ position: 30, importance: #MEDIUM }],
+    identification: [{ position: 30, importance: #MEDIUM }]
+  }
+  CurrencyCode;
+  @UI: {
+    identification: [{ position: 40, importance: #LOW }]
+  }
+  URL;
+}

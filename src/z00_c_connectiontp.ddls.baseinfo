@@ -1,0 +1,15 @@
+{
+"BASEINFO":
+{
+"FROM":
+[
+"Z00_I_CONNECTIONTP"
+],
+"ASSOCIATED":
+[
+"Z00_C_CARRIERTP"
+],
+"BASE":
+[]
+}
+}

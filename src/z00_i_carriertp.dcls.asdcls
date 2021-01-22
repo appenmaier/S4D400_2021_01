@@ -1,0 +1,6 @@
+@EndUserText.label: 'Access Control: Carrier'
+@MappingRole: true
+define role Z00_I_CarrierTP {
+    grant select on Z00_I_CarrierTP
+        where inheriting conditions from entity Z00_I_Carrier;                     
+}
