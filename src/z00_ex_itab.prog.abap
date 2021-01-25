@@ -6,7 +6,7 @@
 REPORT z00_ex_itab.
 
 "Definitionen und Deklarationen
-DATA connections TYPE z16_t_connections.
+DATA connections TYPE z00_connections.
 DATA flights TYPE z00_flights.
 DATA flights_xt TYPE d400_t_percentage.
 

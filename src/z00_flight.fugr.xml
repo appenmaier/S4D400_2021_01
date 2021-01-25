@@ -152,10 +152,6 @@
       </RSFDO>
      </DOCUMENTATION>
     </item>
-    <item>
-     <FUNCNAME>Z_17_GET_FLIGHTS</FUNCNAME>
-     <SHORT_TEXT>Zusatzaufgabe</SHORT_TEXT>
-    </item>
    </FUNCTIONS>
   </asx:values>
  </asx:abap>
